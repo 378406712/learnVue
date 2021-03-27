@@ -2,7 +2,7 @@ import { observe } from './observe.js'
 var obj = {
   a: {
     m: {
-      n: 4
+      n: 1
     }
   },
   b: 4

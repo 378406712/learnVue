@@ -9,7 +9,18 @@
   <body>
     <script src="/xuni/bundle.js"></script>
     <script>
-      myTemplate.render("买了{{thing}}，好{{mood}}");
+      myTemplate.render(`
+        <ul>
+          {{#students}}
+          <li>
+            学生{{item.name}}的爱好是
+            {{#item.hobbies}}
+            <li>{{.}}</li>
+            {{/item.hobbies}}
+          </li>
+          {{/students}}         
+        </ul>
+     `);
     </script>
   </body>
 </html>

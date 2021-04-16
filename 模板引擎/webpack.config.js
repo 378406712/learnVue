@@ -11,4 +11,18 @@ module.exports = {
     port: 8080,
     publicPath: "/xuni/",
   },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude:/node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ['@babel/preset-env']
+          },
+        },
+      },
+    ],
+  },
 };

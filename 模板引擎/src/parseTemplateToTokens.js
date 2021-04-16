@@ -9,7 +9,7 @@ export default function parseTemplateToTokens(templateStr) {
   while (!scanner.eos()) {
     words = scanner.scanUtil("{{"); // 左大括号之前的文字
     if (words != "") {
-      tokens.push(["text", words]);
+      tokens.push(["text", words.trim()]);
     }
     scanner.scan("{{"); // 越过双大括号
     words = scanner.scanUtil("}}");
@@ -21,7 +21,7 @@ export default function parseTemplateToTokens(templateStr) {
       } else if (words[0] == "/") {
         tokens.push(["/", words.substring(1)]);
       } else {
-        tokens.push(["text", words]);
+        tokens.push(["name", words]);
       }
     }
     scanner.scan("}}");

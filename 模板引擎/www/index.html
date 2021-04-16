@@ -5,22 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>webpack</title>
+    <style>
+      .red {
+        color: red;
+        list-style: none;
+      }
+    </style>
   </head>
   <body>
     <script src="/xuni/bundle.js"></script>
     <script>
-      myTemplate.render(`
-        <ul>
-          {{#students}}
-          <li>
-            学生{{item.name}}的爱好是
-            {{#item.hobbies}}
-            <li>{{.}}</li>
-            {{/item.hobbies}}
-          </li>
-          {{/students}}         
-        </ul>
-     `);
+      var templateStr = `
+         <ul >
+           {{#students}}
+           <li class="red">
+             学生{{name}}的爱好是
+             {{#hobby}}
+             <li>{{.}}</li>
+             {{/hobby}}
+           </li>
+           {{/students}}
+         </ul>
+      `;
+      var data = {
+        students: [
+          { name: "张三", hobby: ["游泳", "健身"] },
+          { name: "李四", hobby: ["跑步", "跳绳"] },
+          { name: "王五", hobby: ["吃饭", "打球"] },
+        ],
+      };
+      // var templateStr =
+      //   "我爱{{somebody}},{{somebody}}爱我,我好{{mode}},考了{{a.b.c}}分";
+      // var data = {
+      //   somebody: "apple",
+      //   mood: "开心",
+      //   a: { b: { c: 100 } },
+      // };
+      let dom = myTemplate.render(templateStr, data);
+      document.write(dom);
     </script>
   </body>
 </html>

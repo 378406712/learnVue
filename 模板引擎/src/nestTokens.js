@@ -16,12 +16,12 @@ export default (tokens) => {
         collector = token[2] = []; // 换收集器，给token添加下标为2的项，并让收集器指向它
         break;
       case "/":
-        let section_pop = sections.pop();
+        sections.pop();
         collector =
           sections.length > 0 ? sections[sections.length - 1][2] : nestedTokens;
         break;
       default:
-        collector.push(token)        
+        collector.push(token);
         break;
     }
   }
